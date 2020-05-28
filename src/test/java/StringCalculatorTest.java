@@ -30,4 +30,13 @@ public class StringCalculatorTest {
 
         assertEquals(3, result);
     }
+
+    @Test
+    public void add_multipleCommaSeparatedNumber_returnsSum() {
+        StringCalculator stringCalculator = new StringCalculator();
+
+        int result = stringCalculator.add("1,2,3");
+
+        assertEquals(6, result);
+    }
 }
