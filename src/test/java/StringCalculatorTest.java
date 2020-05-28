@@ -23,7 +23,7 @@ public class StringCalculatorTest {
     }
 
     @Test
-    public void add_twoCommaSeparatedNumber_returnsSum() {
+    public void add_twoCommaSeparatedNumbers_returnsSum() {
         StringCalculator stringCalculator = new StringCalculator();
 
         int result = stringCalculator.add("1,2");
@@ -32,10 +32,19 @@ public class StringCalculatorTest {
     }
 
     @Test
-    public void add_multipleCommaSeparatedNumber_returnsSum() {
+    public void add_multipleCommaSeparatedNumbers_returnsSum() {
         StringCalculator stringCalculator = new StringCalculator();
 
         int result = stringCalculator.add("1,2,3");
+
+        assertEquals(6, result);
+    }
+
+    @Test
+    public void add_multipleNewlineOrCommaSeparatedNumbers_returnsSum() {
+        StringCalculator stringCalculator = new StringCalculator();
+
+        int result = stringCalculator.add("1\n2,3");
 
         assertEquals(6, result);
     }
