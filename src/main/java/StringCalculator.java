@@ -8,11 +8,13 @@ public class StringCalculator {
         String pattern = ",|\n";
 
         // check if first line specifies delimiters
-        char delimiter;
+        String delimiter;
         if (numbers.length() > 2 &&  numbers.charAt(0) == '/' && numbers.charAt(1) == '/') {
-            delimiter = numbers.charAt(2);
-            pattern += "|" + delimiter;
-            numbers = numbers.substring(4); // since 3rd index char would be newline
+            delimiter = numbers.substring(2, numbers.indexOf('\n'));
+            delimiter = delimiter.replace("[", "");
+            delimiter = delimiter.replace("]", "");
+            pattern += "|" + "\\Q" + delimiter + "\\E";
+            numbers = numbers.substring(numbers.indexOf('\n') + 1); // since 3rd index char would be newline
         }
 
         // check if string is empty

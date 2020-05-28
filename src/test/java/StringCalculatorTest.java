@@ -63,7 +63,7 @@ public class StringCalculatorTest {
         StringCalculator stringCalculator = new StringCalculator();
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            stringCalculator.add("//;\n-1;-2;3");
+            stringCalculator.add("-1,-2,3");
         });
 
         String expectedMessage = "negatives not allowed: [-1, -2]";
@@ -80,5 +80,14 @@ public class StringCalculatorTest {
         int result = stringCalculator.add("1,1001");
 
         assertEquals(1, result);
+    }
+
+    @Test
+    public void add_multiCharDelimitedNumbers_returnsSum() {
+        StringCalculator stringCalculator = new StringCalculator();
+
+        int result = stringCalculator.add("//[***]\n1***2***3");
+
+        assertEquals(6, result);
     }
 }
