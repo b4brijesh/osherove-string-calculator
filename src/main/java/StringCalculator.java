@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class StringCalculator {
@@ -21,9 +22,19 @@ public class StringCalculator {
 
         String[] num = numbers.split(pattern);
         int sum = 0;
+        ArrayList<Integer> negatives = new ArrayList<>();
         for (String n: num) {
-            sum += Integer.parseInt(n);
+            int number = Integer.parseInt(n);
+            if (number < 0) negatives.add(number);
+            else sum += number;
         }
+
+        // throw error message if negatives encountered
+        if (negatives.size() > 0) {
+            String negativeNumbers = negatives.toString();
+            throw new IllegalArgumentException("negatives not allowed: " + negativeNumbers);
+        }
+
         return sum;
     }
 }
