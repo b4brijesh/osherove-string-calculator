@@ -72,4 +72,13 @@ public class StringCalculatorTest {
         assertEquals(expectedMessage, actualMessage);
         assertTrue(actualMessage.contains("negatives not allowed")); // alternative check
     }
+
+    @Test
+    public void add_withSomeBigNumbers_returnsSumIgnoringBigNumbers() {
+        StringCalculator stringCalculator = new StringCalculator();
+
+        int result = stringCalculator.add("1,1001");
+
+        assertEquals(1, result);
+    }
 }

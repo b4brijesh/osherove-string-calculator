@@ -26,6 +26,7 @@ public class StringCalculator {
         for (String n: num) {
             int number = Integer.parseInt(n);
             if (number < 0) negatives.add(number);
+            else if (number > 1000) continue;
             else sum += number;
         }
 
