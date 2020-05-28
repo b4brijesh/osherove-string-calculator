@@ -8,12 +8,15 @@ public class StringCalculator {
         String pattern = ",|\n";
 
         // check if first line specifies delimiters
-        String delimiter;
         if (numbers.length() > 2 &&  numbers.charAt(0) == '/' && numbers.charAt(1) == '/') {
-            delimiter = numbers.substring(2, numbers.indexOf('\n'));
-            delimiter = delimiter.replace("[", "");
-            delimiter = delimiter.replace("]", "");
-            pattern += "|" + "\\Q" + delimiter + "\\E";
+            String delimiters = numbers.substring(2, numbers.indexOf('\n'));
+            String[] delimiter = delimiters.split("]");
+            for (String d: delimiter) {
+                d = d.replace("[", "");
+                d = d.replace("]", "");
+                if (d.isEmpty()) continue;
+                pattern += "|" + "\\Q" + d + "\\E";
+            }
             numbers = numbers.substring(numbers.indexOf('\n') + 1); // since 3rd index char would be newline
         }
 
