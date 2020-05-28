@@ -48,4 +48,13 @@ public class StringCalculatorTest {
 
         assertEquals(6, result);
     }
+
+    @Test
+    public void add_semicolonSeparatedNumbers_returnsSum() {
+        StringCalculator stringCalculator = new StringCalculator();
+
+        int result = stringCalculator.add("//;\n1;2;3");
+
+        assertEquals(6, result);
+    }
 }
